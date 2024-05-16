@@ -2,27 +2,28 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 
 function App() {
   return (
-    <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
+    <div className="bg-white container mx-auto p-12 pt-6 md:p-6 lg:p-12">
       <Head>
         <title>Receiptify - Automate Your Expense Tracking</title>
         <meta name="description" content="Transform your receipts into expense insights with Receiptify" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="flex justify-center mb-4">
+      
+      <header className="flex justify-left mb-4">
         <Link href="/">
             <Image src="/logo.svg" alt="Receiptify Logo" width={120} height={30} />
         </Link>
       </header>
 
-      <main className="flex flex-col justify-center mb-4">
+      <main className="bg-white flex flex-col justify-center mb-4">
         <HeroSection />
-        <FeaturesSection />
+        <HowToSection />
         <BenefitsSection />
-        <TestimonialSection />
         <CallToActionSection />  
       </main>
 
@@ -37,49 +38,102 @@ function App() {
 
 function HeroSection() {
   return (
-    <section className="flex flex-col justify-center bg-gray-100 py-12">
-      <h1 className="text-3xl text-black font-bold text-center mb-4">Transform Your Receipts into Expense Insights</h1>
-      <p className="text-lg text-black text-center mb-8">Automate your expense tracking with Receiptify</p>
-      <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-        Upload Your First Receipt
-      </button>
+    <section className="flex flex-col justify-center py-12">
+      <h3 className="text-l text-gray-600 text-center mb-3">MEET RECEIPTIFY</h3>
+      <h1 className="text-3xl text-black font-bold text-center mb-4">Make Your Receipts Work Harder</h1>
+      <p className="text-lg text-gray-600 text-center mt-2">Transcribe your receipts with ease. Less time, less mistakes.</p>
+      <p className="text-m text-gray-600 text-center mb-2">From your browser - with</p>
+      <p className="text-m text-gray-600 text-center mb-8">zero setup</p>
+      <div className="flex justify-center w-1/3 mx-auto">
+        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+          Upload Your First Receipt
+        </button>
+      </div>
     </section>
   );
 }
 
-function FeaturesSection() {
+function HowToSection() {
   return (
-    <section className="py-12">
-      <h2 className="text-2xl font-bold mb-4">Unlock the Power of Your Receipts</h2>
-      <ul className="flex flex-wrap justify-center mb-4">
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-magnifying-glass text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Accurate Transcription</h3>
-          <p className="text-gray-600">Receiptify's AI-powered engine extracts data from your receipts with high accuracy, saving you time and effort.</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-chart-bar text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Expense Categorization</h3>
-          <p className="text-gray-600">Automatically categorize your expenses into predefined categories, making it easy to track your spending.</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-shield-alt text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Secure Storage</h3>
-          <p className="text-gray-600">Your receipts are stored securely in the cloud, protected by robust encryption and access controls.</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-clock text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Real-Time Updates</h3>
-          <p className="text-gray-600">Get instant updates on your expense reports, so you can make informed decisions on the go.</p>
-        </li>
-      </ul>
+    <section className="py-20 grid grid-cols-4">
+      <div>
+      <Card className="rounded-lg w-4/5 h-full flex items-center">
+        <CardHeader className="justify-center overflow-visible py-2">
+          <Image
+            alt="Screenshot icon"
+            className="object-cover rounded-xl"
+            src="/ss_icon.svg"
+            width={100}
+            height={50}
+          />
+        </CardHeader>
+        <CardBody className="flex items-center">
+          <h1>1. Upload</h1>
+          <p>Upload your receipt onto receiptify.</p>
+        </CardBody>
+      </Card>
+      </div>
+
+      <div>
+      <Card className="rounded-lg w-4/5 h-full flex items-center">
+        <CardHeader className="justify-center overflow-visible py-2">
+            <Image
+              alt="Magnifying glass icon"
+              className="object-cover rounded-xl"
+              src="/scan_icon.svg"
+              width={100}
+              height={50}
+            />
+          </CardHeader>
+        <CardBody className="flex items-center">
+          <h1>2. Analyze</h1>
+          <p>Receiptify's OCR extracts relevant data</p>
+        </CardBody>
+      </Card>
+      </div>
+
+      <div>
+      <Card className="rounded-lg w-4/5 h-full flex items-center">
+        <CardHeader className="justify-center overflow-visible py-2">
+            <Image
+              alt="Brush icon"
+              className="object-cover rounded-xl"
+              src="/format_icon.svg"
+              width={100}
+              height={50}
+            />
+          </CardHeader>
+        <CardBody className="flex items-center">
+          <h1>3. Organize</h1>
+          <p>Data is organized and categorized based on user requirements</p>
+        </CardBody>
+      </Card>
+      </div>
+
+      <div>
+        <Card className="rounded-lg w-4/5 h-full flex items-center">
+          <CardHeader className="justify-center overflow-visible py-2">
+            <Image
+              alt="Document picture"
+              className="object-cover rounded-xl"
+              src="/manage_icon.svg"
+              width={100}
+              height={50}
+            />
+          </CardHeader>
+          <CardBody className="flex items-center">
+            <h1>4. Manage</h1>
+            <p>View, manage, and export your budget from your dashboard.</p>
+          </CardBody>
+        </Card>
+      </div>
     </section>
   );
 }
 
 function BenefitsSection() {
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="py-12">
       <h2 className="text-2xl font-bold mb-4">Streamline Your Expense Tracking</h2>
       <ul className="flex flex-wrap justify-center mb-4">
         <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
@@ -96,26 +150,6 @@ function BenefitsSection() {
           <i className="fas fa-shield-alt text-2xl text-gray-500" />
           <h3 className="text-lg font-bold mb-2">Reduce Errors</h3>
           <p className="text-gray-600">Minimize errors and discrepancies with Receiptify's accurate transcription and categorization.</p>
-        </li>
-      </ul>
-    </section>
-  );
-}
-
-function TestimonialSection() {
-  return (
-    <section className="py-12">
-      <h2 className="text-2xl font-bold mb-4">What Our Customers Say</h2>
-      <ul className="flex flex-wrap justify-center mb-4">
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <Image src="/testimonial-1.jpg" alt="Customer Testimonial" width={120} height={120} className="rounded-full" />
-          <p className="text-lg text-gray-600 mb-2">"Receiptify has revolutionized the way we track expenses. It's saved us hours of manual work!"</p>
-          <p className="text-gray-500">— [Customer Name]</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <Image src="/testimonial-2.jpg" alt="Customer Testimonial" width={120} height={120} className="rounded-full" />
-          <p className="text-lg text-gray-600 mb-2">"The accuracy and speed of Receiptify's transcription have exceeded our expectations."</p>
-          <p className="text-gray-500">— [Customer Name]</p>
         </li>
       </ul>
     </section>
