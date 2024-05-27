@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
+import Hero from '@/components/Hero';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       </header>
 
       <main className="bg-white flex flex-col justify-center mb-4">
-        <HeroSection />
+        <Hero />
         <HowToSection />
         <BenefitsSection />
         <CallToActionSection />  
@@ -36,22 +37,6 @@ function App() {
   );
 }
 
-function HeroSection() {
-  return (
-    <section className="flex flex-col justify-center py-12">
-      <h3 className="text-l text-gray-600 text-center mb-3">MEET RECEIPTIFY</h3>
-      <h1 className="text-3xl text-black font-bold text-center mb-4">Make Your Receipts Work Harder</h1>
-      <p className="text-lg text-gray-600 text-center mt-2">Transcribe your receipts with ease. Less time, less mistakes.</p>
-      <p className="text-m text-gray-600 text-center mb-2">From your browser - with</p>
-      <p className="text-m text-gray-600 text-center mb-8">zero setup</p>
-      <div className="flex justify-center w-1/3 mx-auto">
-        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-          Upload Your First Receipt
-        </button>
-      </div>
-    </section>
-  );
-}
 
 function HowToSection() {
   return (
