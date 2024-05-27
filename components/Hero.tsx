@@ -33,39 +33,35 @@ export default function Hero() {
           pb: { xs: 8, sm: 12 },
         }}
       >
-        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
+        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '90%' } }}>
           <Typography
-            className='[text-wrap:loose]'
             variant="h1"
             sx={{
-              display: 'flex',
+              display: 'flex-col',
               flexDirection: { xs: 'column', md: 'row' },
               alignSelf: 'center',
               textAlign: 'center',
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
             }}
           >
-
-            Automate your&nbsp;
-            <span className="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.loose))] md:h-[calc(theme(fontSize.3xl)*theme(lineHeight.loose))] overflow-hidden">
-            <Box
-              component="span"
+            Automate your&nbsp;          
+            <span className="text-indigo-500 inline-flex fltext-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] sm: h-[calc(theme(fontSize.5xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.loose))] overflow-hidden">
+            <Typography
+              variant="h1"
               sx={{
                 fontSize: 'clamp(3rem, 10vw, 4rem)',
                 color: (theme) =>
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
             >
-              
-                <ul className="block animate-text-slide-5 text-left [&_li]:block">
+                <ul className="block animate-text-slide-3 sm:text-center lg:text-left leading-tight [&_li]:block">
                   <li>bills</li>
                   <li>receipts</li>
                   <li>expenses</li>
-                  <li>transactions</li>
-                  <li aria-hidden="true">categories</li>
+                  <li aria-hidden="true">transactions</li>
                 </ul>
               
-            </Box>
+            </Typography>
             </span>
           </Typography>
           <Typography

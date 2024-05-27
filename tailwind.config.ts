@@ -44,13 +44,13 @@ const config: Config = {
                 transform: 'translateY(0%)',
             },
             '33.33%, 60%': {
-                transform: 'translateY(-25%)',
+                transform: 'translateY(-100%)',
             },
             '66.66%, 93.33%': {
-                transform: 'translateY(-50%)',
+                transform: 'translateY(-200%)',
             },
             '100%': {
-                transform: 'translateY(-75%)',
+                transform: 'translateY(-300%)',
             },
         },
         'text-slide-4': {
