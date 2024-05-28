@@ -9,11 +9,11 @@ import Typography from './Typography';
 export default function CallToAction() {
     return (
         <Box
-        
-         sx={{pb: 5 }}
+         className="bg-orange-500 "
+         sx={{pb:2}}
         >
             <Container
-                className="bg-orange-500 text-white"
+                className="text-white"
                 sx={{
                 display: 'flex',
                 flexDirection: 'column',
