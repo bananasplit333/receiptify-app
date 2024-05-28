@@ -7,6 +7,7 @@ import Hero from '@/components/Hero';
 import { AppBar } from '@mui/material';
 import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
+import BenefitsSection from '@/components/BenefitsSection';
 
 //TODO: add landing page photo 
 function App() {
@@ -39,30 +40,7 @@ function App() {
   );
 }
 
-function BenefitsSection() {
-  return (
-    <section className="py-12">
-      <h2 className="text-2xl font-bold mb-4">Streamline Your Expense Tracking</h2>
-      <ul className="flex flex-wrap justify-center mb-4">
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-clock text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Save Time</h3>
-          <p className="text-gray-600">Automate expense tracking and focus on what matters most – growing your business.</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-chart-bar text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Gain Insights</h3>
-          <p className="text-gray-600">Make data-driven decisions with accurate and categorized expense reports.</p>
-        </li>
-        <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-          <i className="fas fa-shield-alt text-2xl text-gray-500" />
-          <h3 className="text-lg font-bold mb-2">Reduce Errors</h3>
-          <p className="text-gray-600">Minimize errors and discrepancies with Receiptify&apos;s accurate transcription and categorization.</p>
-        </li>
-      </ul>
-    </section>
-  );
-}
+
 
 function CallToActionSection() {
   return (

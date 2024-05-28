@@ -3,11 +3,7 @@
 import * as React from 'react';
 import { Avatar, Grid, SxProps, Theme, alpha } from '@mui/material';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Typography from './Typography';
 
 const item: SxProps<Theme> = {
@@ -25,7 +21,7 @@ const item: SxProps<Theme> = {
   };
   
   const image = {
-    height: 55,
+    height: 75,
     my: 4,
   };
   
@@ -40,6 +36,7 @@ export default function HowTo() {
                     ? '#ffffff'
                     : '#02294F',
                 backgroundSize: '100% 20%',
+                
                 backgroundRepeat: 'no-repeat',
             })}
         >
@@ -60,7 +57,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>1.</Box>
-                                <Avatar sx={{bgcolor:' deepOrange[500]'}} alt="ss icon" src="/ss_icon.svg" />
+                                <Avatar sx={{mb:3, height:55, width:55, bgcolor:'#e3f2fd'}} alt="ss icon" src="/ss_icon.svg" />
                                 <Typography variant="h6" align="center">
                                     Upload your receipt onto Receiptify.
                                 </Typography>
@@ -71,13 +68,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>2.</Box>
-                                <Avatar sx={{bgcolor:'deepskyblue[500]'}} alt="ss icon" src="/ss_icon.svg" />
-                                <Box 
-                                    component="img"
-                                    src="/scan_icon.svg"
-                                    alt="analyze icon"
-                                    sx={image}
-                                />
+                                <Avatar sx={{mb:3, height:55, width:55, bgcolor:'#e3f2fd'}} alt="ss icon" src="/scan_icon.svg" />
                                 <Typography variant="h6" align="center">
                                     Receiptify&apos;s OCR extracts and organizes relevant data.
                                 </Typography>
@@ -87,12 +78,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>3.</Box>
-                                <Box 
-                                    component="img"
-                                    src="/manage_icon.svg"
-                                    alt="manage icon"
-                                    sx={image}
-                                />
+                                <Avatar sx={{mb:3, height:55, width:55, bgcolor:'#e3f2fd'}} alt="ss icon" src="/manage_icon.svg" />
                                     <Typography variant="h6" align="center">
                                         View, manage, and export your budget from your dashboard.
                                     </Typography>                            
