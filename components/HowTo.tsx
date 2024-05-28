@@ -94,7 +94,7 @@ export default function HowTo() {
                                     sx={image}
                                 />
                                 <Typography variant="h6" align="center">
-                                    Receiptify's OCR extracts and organizes relevant data.
+                                    Receiptify&apos;s OCR extracts and organizes relevant data.
                                 </Typography>
                             </Box>
                         </Grid>
