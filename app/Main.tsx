@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
 import ResponsiveBenefitsSection from '@/components/BenefitsSection';
+import CallToAction from '@/components/CallToAction';
 
 //TODO: add landing page photo 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Hero />
         <HowTo />
         <ResponsiveBenefitsSection />
-        <CallToActionSection />  
+        <CallToAction />
       </main>
 
       <footer className="flex justify-center mb-4">
