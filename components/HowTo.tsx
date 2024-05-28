@@ -60,13 +60,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>1.</Box>
-                                <Avatar alt="ss icon" src="/ss_icon.svg" />
-                                <Box 
-                                    component="img"
-                                    src="/ss_icon.svg"
-                                    alt="ss icon"
-                                    sx={image}
-                                />
+                                <Avatar sx={{bgcolor:' deepOrange[500]'}} alt="ss icon" src="/ss_icon.svg" />
                                 <Typography variant="h6" align="center">
                                     Upload your receipt onto Receiptify.
                                 </Typography>
@@ -77,6 +71,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>2.</Box>
+                                <Avatar sx={{bgcolor:'deepskyblue[500]'}} alt="ss icon" src="/ss_icon.svg" />
                                 <Box 
                                     component="img"
                                     src="/scan_icon.svg"
