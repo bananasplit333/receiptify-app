@@ -10,14 +10,7 @@ import ResponsiveBenefitsSection from '@/components/BenefitsSection';
 function App() {
   return (
     <div className="">
-      <Head>
-        <title>Receiptify - Automate Your Expense Tracking</title>
-        <meta name="description" content="Transform your receipts into expense insights with Receiptify" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      
-      <header className="flex justify-left">
+      <header>
         <ResponsiveAppBar />
       </header>
 
