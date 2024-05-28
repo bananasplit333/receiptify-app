@@ -1,13 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
 import Script from 'next/script';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import Hero from '@/components/Hero';
-import { AppBar } from '@mui/material';
 import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
-import BenefitsSection from '@/components/BenefitsSection';
+import ResponsiveBenefitsSection from '@/components/BenefitsSection';
 
 //TODO: add landing page photo 
 function App() {
@@ -27,7 +24,7 @@ function App() {
       <main className="bg-white flex flex-col justify-center mb-4">
         <Hero />
         <HowTo />
-        <BenefitsSection />
+        <ResponsiveBenefitsSection />
         <CallToActionSection />  
       </main>
 
@@ -39,8 +36,6 @@ function App() {
     </div>
   );
 }
-
-
 
 function CallToActionSection() {
   return (
