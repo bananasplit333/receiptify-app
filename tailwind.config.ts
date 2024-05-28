@@ -26,8 +26,8 @@ const config: Config = {
         'text-slide-6': 'text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite',
         'text-slide-7': 'text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
         'text-slide-8': 'text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-      },
-      keyframes: {
+    },
+    keyframes: {
         'text-slide-2': {
             '0%, 40%': {
                 transform: 'translateY(0%)',
@@ -44,13 +44,13 @@ const config: Config = {
                 transform: 'translateY(0%)',
             },
             '33.33%, 60%': {
-                transform: 'translateY(-100%)',
+                transform: 'translateY(-25%)',
             },
             '66.66%, 93.33%': {
-                transform: 'translateY(-200%)',
+                transform: 'translateY(-50%)',
             },
             '100%': {
-                transform: 'translateY(-300%)',
+                transform: 'translateY(-75%)',
             },
         },
         'text-slide-4': {
@@ -167,8 +167,9 @@ const config: Config = {
             '100%': {
                 transform: 'translateY(-88.88%)',
             },
+         }
         },
-      },
+    
     },
   },
   plugins: [nextui()],

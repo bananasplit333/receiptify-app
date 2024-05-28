@@ -45,7 +45,7 @@ export default function Hero() {
             }}
           >
             Automate your&nbsp;          
-            <span className="text-indigo-500 inline-flex fltext-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] sm: h-[calc(theme(fontSize.5xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.loose))] overflow-hidden">
+            <span className="text-indigo-500 inline-flex fltext-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.loose))] sm:h-[calc(theme(fontSize.6xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.loose))] overflow-hidden">
             <Typography
               variant="h1"
               sx={{
@@ -54,11 +54,12 @@ export default function Hero() {
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
             >
-                <ul className="block animate-text-slide-3 sm:text-center lg:text-left leading-tight [&_li]:block">
+                <ul className="block animate-text-slide-4 sm:text-center md:text-left lg:text-left leading-tight [&_li]:block">
                   <li>bills</li>
                   <li>receipts</li>
                   <li>expenses</li>
-                  <li aria-hidden="true">transactions</li>
+                  <li>transactions</li>
+                  <li aria-hidden="true">bills</li>
                 </ul>
               
             </Typography>
@@ -113,9 +114,9 @@ export default function Hero() {
             width: '100%',
             backgroundImage:
               theme.palette.mode === 'light'
-                ? 'url("/static/images/templates/templates-images/hero-light.png")'
-                : 'url("/static/images/templates/templates-images/hero-dark.png")',
-            backgroundSize: 'cover',
+              ? 'url("/ss_dashboard.png")'
+              : 'url("/ss_dashboard.png")',
+              backgroundSize: 'cover',
             borderRadius: '10px',
             outline: '1px solid',
             outlineColor:

@@ -4,10 +4,14 @@ import Link from 'next/link';
 import Script from 'next/script';
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import Hero from '@/components/Hero';
+import { AppBar } from '@mui/material';
+import ResponsiveAppBar from '@/components/AppBar';
+import HowTo from '@/components/HowTo';
 
+//TODO: add landing page photo 
 function App() {
   return (
-    <div className="bg-white container mx-auto p-12 pt-6 md:p-6 lg:p-12">
+    <div className="">
       <Head>
         <title>Receiptify - Automate Your Expense Tracking</title>
         <meta name="description" content="Transform your receipts into expense insights with Receiptify" />
@@ -15,15 +19,13 @@ function App() {
       </Head>
 
       
-      <header className="flex justify-left mb-4">
-        <Link href="/">
-            <Image src="/logo.svg" alt="Receiptify Logo" width={120} height={30} />
-        </Link>
+      <header className="flex justify-left">
+        <ResponsiveAppBar />
       </header>
 
       <main className="bg-white flex flex-col justify-center mb-4">
         <Hero />
-        <HowToSection />
+        <HowTo />
         <BenefitsSection />
         <CallToActionSection />  
       </main>
@@ -34,85 +36,6 @@ function App() {
 
       <Script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/js/fontawesome.min.js" />
     </div>
-  );
-}
-
-
-function HowToSection() {
-  return (
-    <section className="py-20 grid grid-cols-4">
-      <div>
-      <Card className="rounded-lg w-4/5 h-full flex items-center">
-        <CardHeader className="justify-center overflow-visible py-2">
-          <Image
-            alt="Screenshot icon"
-            className="object-cover rounded-xl"
-            src="/ss_icon.svg"
-            width={100}
-            height={50}
-          />
-        </CardHeader>
-        <CardBody className="flex items-center">
-          <h1>1. Upload</h1>
-          <p>Upload your receipt onto receiptify.</p>
-        </CardBody>
-      </Card>
-      </div>
-
-      <div>
-      <Card className="rounded-lg w-4/5 h-full flex items-center">
-        <CardHeader className="justify-center overflow-visible py-2">
-            <Image
-              alt="Magnifying glass icon"
-              className="object-cover rounded-xl"
-              src="/scan_icon.svg"
-              width={100}
-              height={50}
-            />
-          </CardHeader>
-        <CardBody className="flex items-center">
-          <h1>2. Analyze</h1>
-          <p>Receiptify's OCR extracts relevant data</p>
-        </CardBody>
-      </Card>
-      </div>
-
-      <div>
-      <Card className="rounded-lg w-4/5 h-full flex items-center">
-        <CardHeader className="justify-center overflow-visible py-2">
-            <Image
-              alt="Brush icon"
-              className="object-cover rounded-xl"
-              src="/format_icon.svg"
-              width={100}
-              height={50}
-            />
-          </CardHeader>
-        <CardBody className="flex items-center">
-          <h1>3. Organize</h1>
-          <p>Data is organized and categorized based on user requirements</p>
-        </CardBody>
-      </Card>
-      </div>
-
-      <div>
-        <Card className="rounded-lg w-4/5 h-full flex items-center">
-          <CardHeader className="justify-center overflow-visible py-2">
-            <Image
-              alt="Document picture"
-              className="object-cover rounded-xl"
-              src="/manage_icon.svg"
-              width={100}
-              height={50}
-            />
-          </CardHeader>
-          <CardBody className="flex items-center">
-            <h1>4. Manage</h1>
-            <p>View, manage, and export your budget from your dashboard.</p>
-          </CardBody>
-        </Card>
-      </div>
-    </section>
   );
 }
 
@@ -134,7 +57,7 @@ function BenefitsSection() {
         <li className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
           <i className="fas fa-shield-alt text-2xl text-gray-500" />
           <h3 className="text-lg font-bold mb-2">Reduce Errors</h3>
-          <p className="text-gray-600">Minimize errors and discrepancies with Receiptify's accurate transcription and categorization.</p>
+          <p className="text-gray-600">Minimize errors and discrepancies with Receiptify&apos;s accurate transcription and categorization.</p>
         </li>
       </ul>
     </section>
