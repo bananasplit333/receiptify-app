@@ -52,17 +52,6 @@ export default function HowTo() {
                 flexDirection: 'column',
                 alignItems: 'center',
             }}>
-                 <Box
-                component="img"
-                src=""
-                alt="banner background"
-                sx={{
-                    pointerEvents: 'none',
-                    position: 'absolute',
-                    top: -180,
-                    opacity: 0.7,
-                }}
-                />
                 <Typography variant="h4" marked="center" component="h2" sx={{mb:14}}>
                     How it works
                 </Typography>
