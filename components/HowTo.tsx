@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Grid, SxProps, Theme, alpha } from '@mui/material';
+import { Avatar, Grid, SxProps, Theme, alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -37,7 +37,7 @@ export default function HowTo() {
                 width: '100%',
                 backgroundColor:
                   theme.palette.mode === 'light'
-                    ? '#E3F2FD'
+                    ? '#ffffff'
                     : '#02294F',
                 backgroundSize: '100% 20%',
                 backgroundRepeat: 'no-repeat',
@@ -60,6 +60,7 @@ export default function HowTo() {
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>1.</Box>
+                                <Avatar alt="ss icon" src="/ss_icon.svg" />
                                 <Box 
                                     component="img"
                                     src="/ss_icon.svg"
