@@ -45,7 +45,7 @@ export default function ResponsiveDrawer() {
 
   const drawer = (
     <div>
-      <div className="mx-4">
+      <div className="mx-4 my-4">
         <UserButton/>
       </div>
       <Divider />
