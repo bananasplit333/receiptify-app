@@ -31,15 +31,4 @@ function App() {
   );
 }
 
-function CallToActionSection() {
-  return (
-    <section className="bg-orange-500 py-12">
-      <h2 className="text-3xl font-bold text-white text-center mb-4">Start Streamlining Your Expense Tracking Today</h2>
-      <button className="bg-white hover:bg-gray-100 text-orange-500 font-bold py-2 px-4 rounded">
-        Upload Your First Receipt
-      </button>
-    </section>
-  );
-}
-
 export default App;
