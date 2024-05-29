@@ -1,5 +1,56 @@
 import Spreadsheet from "react-spreadsheet";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import Box from '@mui/material/Box';
 
+
+const columns: GridColDef<(typeof rows)[number]>[] = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    {
+      field: 'item',
+      headerName: 'Item',
+      width: 150,
+      editable: true,
+    },
+    {
+      field: 'category',
+      headerName: 'Categories',
+      width: 150,
+      editable: true,
+    },
+    {
+      field: 'qty',
+      headerName: 'Quantity',
+      type: 'number',
+      width: 110,
+      editable: true,
+    },
+    {
+      field: 'price',
+      headerName: 'Price',
+      sortable: false,
+      width: 160,
+      editable:true,
+    },
+  ];
+  
+  const rows = [
+    { id: 1, item:'broccoli', category: 'groceries', qty: 3, price: 14 },
+    { id: 2, item: 'apple', category: 'groceries', qty: 1, price: 31 },
+    { id: 3, item: 'swiffer', category: 'home care', qty: 1, price: 31 },
+    { id: 4, item: 'banana', category: 'groceries', qty: 6, price: 12 },
+    { id: 5, item: 'milk', category: 'groceries', qty: 2, price: 9 },
+    { id: 6, item: 'toilet paper', category: 'home care', qty: 4, price: 20 },
+    { id: 7, item: 'shampoo', category: 'personal care', qty: 1, price: 15 },
+    { id: 8, item: 'chicken breast', category: 'groceries', qty: 2, price: 25 },
+    { id: 9, item: 'detergent', category: 'home care', qty: 1, price: 18 },
+    { id: 10, item: 'oranges', category: 'groceries', qty: 3, price: 10 },
+    { id: 11, item: 'toothpaste', category: 'personal care', qty: 1, price: 5 },
+    { id: 12, item: 'bread', category: 'groceries', qty: 2, price: 8 },
+    { id: 13, item: 'dish soap', category: 'home care', qty: 1, price: 7 },
+    { id: 14, item: 'lettuce', category: 'groceries', qty: 2, price: 6 },
+    { id: 15, item: 'deodorant', category: 'personal care', qty: 1, price: 10 },
+  ];
+  
 const ReactSpreadSheet = () => {
     const columnLabels = [ "Item", "Categories", "qty", "total",];
     const rowLabels = [ "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", ];
@@ -22,10 +73,22 @@ const ReactSpreadSheet = () => {
         [{ "value": "MOZZ/OG 2/1#" }, { "value": "Dairy" }, { "value": "6" }, { "value": "6.82" }]
     ];
     return (
-        <Spreadsheet data={data} 
-            columnLabels={columnLabels}
-            rowLabels={rowLabels}
+        <Box sx={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5]}
+          checkboxSelection
+          disableRowSelectionOnClick
         />
+      </Box>
     );
 };
 
