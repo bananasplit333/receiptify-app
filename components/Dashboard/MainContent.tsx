@@ -1,7 +1,7 @@
 'use client';
 import { Box, Toolbar, Typography, Grid } from "@mui/material"
 import DragDropComponent from "../DragDrop"
-
+import ReactSpreadSheet from "./ExcelSection";
 const drawerWidth = '180'
 
 export default function MainContent(){
@@ -14,7 +14,7 @@ export default function MainContent(){
                         <DragDropComponent />
                     </Box>
                     
-                    <Box sx={{ backgroundColor: 'white', height: '100vh' }}>
+                    <Box sx={{ backgroundColor: 'white', height: '100vh', overflow: 'auto' }}>
                         <Typography paragraph>
                         penis penis penis penis penis, penis penis penis penis penis penis
                         penis penis penis penis penis penis penis penis.
@@ -36,7 +36,8 @@ export default function MainContent(){
                 </Grid>
 
                 <Grid item xs={12} md={9}>
-                    <Box sx={{ backgroundColor: 'white', height: '100vh' }}>
+                    
+                    <Box sx={{ backgroundColor: 'white', height: '100vh', overflow: 'auto' }}>
                         <Typography paragraph>
                         penis penis penis penis penis, penis penis penis penis penis penis
                         penis penis penis penis penis penis penis penis.
@@ -54,6 +55,7 @@ export default function MainContent(){
                         penis penis penis penis penis penis penis. penis penis penis penis penis penis
                         penis penis penis penis penis penis.
                         </Typography>
+                        <ReactSpreadSheet />
                     </Box>
                 </Grid>
             </Grid>

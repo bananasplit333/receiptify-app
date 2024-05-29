@@ -45,7 +45,6 @@ export default function ResponsiveDrawer() {
 
   const drawer = (
     <div>
-      <Toolbar className="min-h-2" sx={{width:'auto'}}/>
       <div className="mx-4">
         <UserButton/>
       </div>
@@ -67,7 +66,7 @@ export default function ResponsiveDrawer() {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{}}>
       <CssBaseline />
       <AppBar
         className="h-0"
@@ -83,7 +82,7 @@ export default function ResponsiveDrawer() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 0, display: { sm: 'none' }, backgroundColor: 'lightblue' }}
+            sx={{ mr: 0, display: { sm: 'none', md: 'none'}, backgroundColor: 'lightblue' }}
           >
             <MenuIcon />
           </IconButton>
@@ -125,7 +124,6 @@ export default function ResponsiveDrawer() {
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
-        <Toolbar />
       </Box>
     </Box>
   );

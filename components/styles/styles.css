@@ -1,0 +1,38 @@
+/* styles.css */
+.drag-drop-component {
+    padding: 1rem;
+  }
+  
+@media (min-width: 440px) {
+  /* Small screens */
+  .drag-drop-component {
+    padding: 1.5rem;
+  }
+  
+  .drag-drop-component .filepond--root {
+    width: 100%;
+  }
+}
+
+.drag-drop-component .filepond--file-action-button{
+  cursor: pointer;
+}
+
+/* the background color of the filepond drop area */
+
+/* bordered drop area */
+.filepond--panel-root {
+  background-color: transparent;
+  border: 2px solid #2c3340;
+}
+
+.filepond--label-action {
+  text-decoration-color: #28b452;
+}
+
+
+/* the color of the focus ring */
+.filepond--file-action-button:hover,
+.filepond--file-action-button:focus {
+    box-shadow: 0 0 0 0.125em rgba(194, 96, 156, 0.9);
+}
