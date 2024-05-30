@@ -7,22 +7,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { UserButton } from '@clerk/nextjs';
-import { AddCircleOutline } from '@mui/icons-material';
-
+import { AddCircleOutline, Mail } from '@mui/icons-material';
 
 const drawerWidth = 180;
-
-
 
 export default function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -46,7 +41,7 @@ export default function ResponsiveDrawer() {
   const drawer = (
     <div>
       <div className="mx-4 my-4">
-        <UserButton/>
+        <UserButton />
       </div>
       <Divider />
       <List>
@@ -54,26 +49,25 @@ export default function ResponsiveDrawer() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <AddCircleOutline /> : <MailIcon />}
+                {index % 2 === 0 ? <AddCircleOutline /> : <Mail />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      
     </div>
   );
 
   return (
-    <Box sx={{}}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+
       <AppBar
-        className="h-0"
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { lg: `calc(100% - ${drawerWidth}px)` },
+          ml: { lg: `${drawerWidth}px` },
         }}
       >
         <Toolbar>
@@ -82,18 +76,18 @@ export default function ResponsiveDrawer() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 0, display: { sm: 'none', md: 'none'}, backgroundColor: 'lightblue' }}
+            sx={{ mr: 2, display: { lg: 'none' }, backgroundColor: 'lightblue' }}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
-        sx={{ width: { sm: 80 }, flexShrink: { sm: 0 } }}
+        sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}
         aria-label="dashboard"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -103,7 +97,7 @@ export default function ResponsiveDrawer() {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', lg: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
@@ -112,7 +106,7 @@ export default function ResponsiveDrawer() {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
+            display: { xs: 'none', lg: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
           open
@@ -122,8 +116,9 @@ export default function ResponsiveDrawer() {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 3, width: { lg: `calc(100% - ${drawerWidth}px)` } }}
       >
+        {/* Your main content goes here */}
       </Box>
     </Box>
   );

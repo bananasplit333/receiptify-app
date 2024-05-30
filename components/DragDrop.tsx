@@ -4,29 +4,53 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import { FilePondFile } from 'filepond';
-import './styles/styles.css'
+import './styles/styles.css';
+
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
+interface UploadedFile {
+  file: File;
+  filename: string;
+}
+
 const DragDropComponent: React.FC = () => {
-  const [files, setFiles] = useState<FilePondFile[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const pondRef = useRef<FilePond>(null);
 
   const handleInit = () => {
     console.log("FilePond instance has initialised");
   };
 
+  const handleUpdateFiles = (fileItems: any) => {
+    setFiles(fileItems.map((fileItem: any) => fileItem.file));
+  };
+
+  const handleProcessFile = (error: any, file: any) => {
+    if (!error) {
+      const newFile: UploadedFile = { file: file.file, filename: file.file.name };
+      setUploadedFiles((prevFiles) => [...prevFiles, newFile]);
+    }
+  };
+
   return (
-    <div className="drag-drop-component p-4 sm:p-6 md:p-2 ">
+    <div className="drag-drop-component p-4 sm:p-6 md:p-2">
       <FilePond
         ref={pondRef}
-        allowMultiple={false}
+        allowMultiple={true}
         allowReorder={true}
         allowReplace={true}
         acceptedFileTypes={['image/*']}
         maxFiles={3}
-        server="api/upload"
+        server={{
+          url: '/api',
+          process: {
+            url: '/upload',
+            onload: (response) => response,
+            onerror: (response) => response,
+          },
+        }}
         name="files"
         dropValidation={true}
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
@@ -35,13 +59,22 @@ const DragDropComponent: React.FC = () => {
         labelFileProcessingAborted='Upload cancelled'
         labelFileProcessingError='Error during upload. Please ensure you are uploading images.'
         oninit={handleInit}
-        onupdatefiles={(fileItems) => {
-          setFiles(fileItems.map((fileItem) => fileItem as FilePondFile));
-        }}
-
+        onupdatefiles={handleUpdateFiles}
+        onprocessfile={handleProcessFile}
       />
+      <div className="uploaded-files-dashboard mt-4">
+        <h2>Uploaded Files</h2>
+        <ul>
+          {uploadedFiles.map((file, index) => (
+            <li key={index}>
+
+              <p>{file.filename}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
 export default DragDropComponent;
