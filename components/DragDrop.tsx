@@ -38,11 +38,11 @@ const DragDropComponent: React.FC = () => {
     <div className="drag-drop-component p-4 sm:p-6 md:p-2">
       <FilePond
         ref={pondRef}
-        allowMultiple={true}
+        allowMultiple={false}
         allowReorder={true}
         allowReplace={true}
         acceptedFileTypes={['image/*']}
-        maxFiles={3}
+        maxFiles={1}
         server={{
           url: '/api',
           process: {
@@ -57,7 +57,7 @@ const DragDropComponent: React.FC = () => {
         labelFileProcessing='Uploading'
         labelFileProcessingComplete='Upload complete'
         labelFileProcessingAborted='Upload cancelled'
-        labelFileProcessingError='Error during upload. Please ensure you are uploading images.'
+        labelFileProcessingError='Error during upload.'
         oninit={handleInit}
         onupdatefiles={handleUpdateFiles}
         onprocessfile={handleProcessFile}
