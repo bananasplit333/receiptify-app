@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DataGrid, GridColDef, GridActionsCellItem, GridRowId } from '@mui/x-data-grid';
+import React, { useEffect, useState } from 'react';
+import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Snackbar from '@mui/material/Snackbar';
@@ -23,11 +23,11 @@ const initialRows = [
   { id: 15, item: 'deodorant', category: 'personal care', qty: 1, price: 10 },
 ];
 
-const ReactSpreadSheet = () => {
+const ReactSpreadSheet = ({ jsonData }) => {
   const [rows, setRows] = useState(initialRows);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const handleDelete = (id: GridRowId) => {
+  const handleDelete = (id) => {
     setRows((prevRows) => prevRows.filter((row) => row.id !== id));
     setOpenSnackbar(true);
   };
@@ -36,12 +36,42 @@ const ReactSpreadSheet = () => {
     setOpenSnackbar(false);
   };
 
-  const columns: GridColDef[] = [
+  useEffect(() => {
+    if (jsonData) {
+      // Transform data into rows for the DataGrid
+      const data = JSON.parse(jsonData);
+      const newRows = [];
+      let idCounter = initialRows.length + 1;
+
+      for (const category in data) {
+        if (data.hasOwnProperty(category)) {
+          const items = data[category];
+          if (Array.isArray(items)) {
+            items.forEach((item) => {
+              console.log(item.split(","));
+              const [itemName, itemPrice] = item.split(",").map((str) => str.trim());;
+              newRows.push({
+                id: idCounter++,
+                item: itemName,
+                category: category,
+                qty: 1,
+                price: parseFloat(itemPrice),
+              });
+            });
+          }
+        }
+      }
+
+      setRows(newRows);
+    }
+  }, [jsonData]);
+
+  const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'item', headerName: 'Item', width: 150, editable: true },
-    { field: 'category', headerName: 'Categories', width: 150, editable: true },
+    { field: 'category', headerName: 'Category', width: 150, editable: true },
     { field: 'qty', headerName: 'Quantity', type: 'number', width: 110, editable: true },
-    { field: 'price', headerName: 'Price', sortable: false, width: 110, editable: true },
+    { field: 'price', headerName: 'Price', width: 110, editable: true },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -71,7 +101,6 @@ const ReactSpreadSheet = () => {
           Row deleted successfully!
         </Alert>
       </Snackbar>
-      
     </Box>
   );
 };

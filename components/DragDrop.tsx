@@ -14,7 +14,11 @@ interface UploadedFile {
   filename: string;
 }
 
-const DragDropComponent: React.FC = () => {
+interface DragDropComponentProps {
+  onJsonDataReceived: (data: any) => void;
+}
+
+const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceived }) => {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
   const [files, setFiles] = useState<File[]>([]);
   const pondRef = useRef<FilePond>(null);
@@ -34,6 +38,12 @@ const DragDropComponent: React.FC = () => {
     }
   };
 
+  const handleResponse = (response: string) => {
+    const jsonResponse = JSON.parse(response);
+    onJsonDataReceived(jsonResponse);
+    return response;
+  };
+
   return (
     <div className="drag-drop-component p-4 sm:p-6 md:p-2">
       <FilePond
@@ -47,7 +57,7 @@ const DragDropComponent: React.FC = () => {
           url: '/api',
           process: {
             url: '/upload',
-            onload: (response) => response,
+            onload: (response) => handleResponse(response),
             onerror: (response) => response,
           },
         }}
