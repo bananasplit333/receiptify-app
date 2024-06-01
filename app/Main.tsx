@@ -6,6 +6,9 @@ import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
 import ResponsiveBenefitsSection from '@/components/BenefitsSection';
 import CallToAction from '@/components/CallToAction';
+import { useRouter } from 'next/router';
+import { SignedOut, useUser } from '@clerk/nextjs';
+import { useEffect } from 'react';
 
 //TODO: add landing page photo 
 function App() {
@@ -15,12 +18,15 @@ function App() {
         <ResponsiveAppBar />
       </header>
 
-      <main className="bg-white flex flex-col justify-center mb-4">
-        <Hero />
-        <HowTo />
-        <ResponsiveBenefitsSection />
-        <CallToAction />
-      </main>
+      <SignedOut>
+        <main className="bg-white flex flex-col justify-center mb-4">
+          <Hero />
+          <HowTo />
+          <ResponsiveBenefitsSection />
+          <CallToAction />
+        </main>
+      </SignedOut>
+
 
       <footer className="flex justify-center mb-4">
         <p className="text-sm text-gray-500">Copyright 2024 Receiptify. All rights reserved.</p>

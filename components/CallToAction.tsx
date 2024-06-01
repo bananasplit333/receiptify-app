@@ -9,25 +9,28 @@ import Typography from './Typography';
 export default function CallToAction() {
     return (
         <Box
-         className="bg-orange-500 "
-         sx={{pb:2}}
+            className="bg-blue-600"
+            sx={{
+                pb: 2,
+                pt: { xs: 14, sm: 20 },
+                textAlign: 'center',
+                color: 'white'
+            }}
         >
             <Container
-                className="text-white"
                 sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                pt: { xs: 14, sm: 20 },
-                pb: { xs: 8, sm: 12 },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    pb: { xs: 8, sm: 12 },
                 }}
             >
-                <Typography variant="h4" component="h2" sx={{mb:4}}>
-                        Start streamlining your expense tracking today!
+                <Typography variant="h4" component="h2" sx={{ mb: 4 }}>
+                    Start streamlining your expense tracking today!
                 </Typography>
-                <div>
-                    <Button variant="contained" className="bg-lime-950 text-white">Upload Your First Receipt</Button>
-                </div>   
+                <Button variant="contained" className="bg-white text-blue-500" sx={{ mt: 3, px: 4, py: 2, fontWeight: 'bold' }}>
+                    Upload Your First Receipt
+                </Button>
             </Container>
         </Box>
     );

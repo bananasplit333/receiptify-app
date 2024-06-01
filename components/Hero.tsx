@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { alpha } from '@mui/material';
+import { CssBaseline, alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -11,15 +11,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 export default function Hero() {
-  return (
+  return (  
+    <>
+    <CssBaseline />
     <Box
       id="hero"
       sx={(theme) => ({
         width: '100%',
-        backgroundImage:
-          theme.palette.mode === 'light'
-            ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-            : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
+        backgroundImage: theme.palette.mode === 'light'
+          ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
+          : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
         backgroundSize: '100% 20%',
         backgroundRepeat: 'no-repeat',
       })}
@@ -44,16 +45,15 @@ export default function Hero() {
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
             }}
           >
-            Automate your&nbsp;          
+            Automate your&nbsp;
             <span className="text-indigo-500 inline-flex fltext-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.loose))] sm:h-[calc(theme(fontSize.6xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.loose))] overflow-hidden">
-            <Typography
-              variant="h1"
-              sx={{
-                fontSize: 'clamp(3rem, 10vw, 4rem)',
-                color: (theme) =>
-                  theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
-              }}
-            >
+              <Typography
+                variant="h1"
+                sx={{
+                  fontSize: 'clamp(3rem, 10vw, 4rem)',
+                  color: (theme) => theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
+                }}
+              >
                 <ul className="block animate-text-slide-4 sm:text-center md:text-left lg:text-left leading-tight [&_li]:block">
                   <li>bills</li>
                   <li>receipts</li>
@@ -61,8 +61,8 @@ export default function Hero() {
                   <li>transactions</li>
                   <li aria-hidden="true">bills</li>
                 </ul>
-              
-            </Typography>
+
+              </Typography>
             </span>
           </Typography>
           <Typography
@@ -91,8 +91,7 @@ export default function Hero() {
               inputProps={{
                 autoComplete: 'off',
                 'aria-label': 'Enter your email address',
-              }}
-            />
+              }} />
             <Button variant="contained" color="primary">
               Start now
             </Button>
@@ -112,24 +111,20 @@ export default function Hero() {
             alignSelf: 'center',
             height: { xs: 200, sm: 700 },
             width: '100%',
-            backgroundImage:
-              theme.palette.mode === 'light'
+            backgroundImage: theme.palette.mode === 'light'
               ? 'url("/ss_dashboard.png")'
               : 'url("/ss_dashboard.png")',
-              backgroundSize: 'cover',
+            backgroundSize: 'cover',
             borderRadius: '10px',
             outline: '1px solid',
-            outlineColor:
-              theme.palette.mode === 'light'
-                ? alpha('#BFCCD9', 0.5)
-                : alpha('#9CCCFC', 0.1),
-            boxShadow:
-              theme.palette.mode === 'light'
-                ? `0 0 12px 8px ${alpha('#9CCCFC', 0.2)}`
-                : `0 0 24px 12px ${alpha('#033363', 0.2)}`,
-          })}
-        />
+            outlineColor: theme.palette.mode === 'light'
+              ? alpha('#BFCCD9', 0.5)
+              : alpha('#9CCCFC', 0.1),
+            boxShadow: theme.palette.mode === 'light'
+              ? `0 0 12px 8px ${alpha('#9CCCFC', 0.2)}`
+              : `0 0 24px 12px ${alpha('#033363', 0.2)}`,
+          })} />
       </Container>
-    </Box>
+    </Box></>
   );
 }
