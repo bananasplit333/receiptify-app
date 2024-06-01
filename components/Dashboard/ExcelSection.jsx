@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const initialRows = [
   { id: 1, item: 'broccoli', category: 'groceries', qty: 3, price: 14 },
@@ -23,6 +24,41 @@ const initialRows = [
   { id: 15, item: 'deodorant', category: 'personal care', qty: 1, price: 10 },
 ];
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+    secondary: {
+      main: '#dc004e',
+    },
+  },
+  components: {
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+        },
+        columnHeaders: {
+          backgroundColor: '#ffffff', // White background for headers
+          fontSize: '16px',
+          fontWeight: 'bold',
+        },
+        row: {
+          '&:nth-of-type(odd)': {
+            backgroundColor: '#f0f0f0', // Light gray background for odd rows
+          },
+        },
+        cell: {
+          '&:focus': {
+            outline: 'none',
+          },
+        },
+      },
+    },
+  },
+});
+
 const ReactSpreadSheet = ({ jsonData }) => {
   const [rows, setRows] = useState(initialRows);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -38,7 +74,6 @@ const ReactSpreadSheet = ({ jsonData }) => {
 
   useEffect(() => {
     if (jsonData) {
-      // Transform data into rows for the DataGrid
       const data = JSON.parse(jsonData);
       const newRows = [];
       let idCounter = initialRows.length + 1;
@@ -48,8 +83,7 @@ const ReactSpreadSheet = ({ jsonData }) => {
           const items = data[category];
           if (Array.isArray(items)) {
             items.forEach((item) => {
-              console.log(item.split(","));
-              const [itemName, itemPrice] = item.split(",").map((str) => str.trim());;
+              const [itemName, itemPrice] = item.split(',').map((str) => str.trim());
               newRows.push({
                 id: idCounter++,
                 item: itemName,
@@ -81,27 +115,31 @@ const ReactSpreadSheet = ({ jsonData }) => {
           icon={<DeleteIcon />}
           label="Delete"
           onClick={() => handleDelete(params.id)}
+          sx={{ '&:hover': { color: theme.palette.secondary.main } }}
         />
       ),
     },
   ];
 
   return (
-    <Box sx={{ display: 'flex', width: '100%' }}>
-      <DataGrid
-        autoHeight
-        rows={rows}
-        columns={columns}
-        pageSizeOptions={[5, 10, 15]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-      <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success">
-          Row deleted successfully!
-        </Alert>
-      </Snackbar>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: 'flex', width: '100%', p: 2, bgcolor: '#f0f0f0' }}>
+        <DataGrid
+          autoHeight
+          rows={rows}
+          columns={columns}
+          pageSizeOptions={[5, 10, 15]}
+          checkboxSelection
+          disableRowSelectionOnClick
+          sx={{ bgcolor: 'background.paper', borderRadius: 1 }}
+        />
+        <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
+          <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+            Row deleted successfully!
+          </Alert>
+        </Snackbar>
+      </Box>
+    </ThemeProvider>
   );
 };
 

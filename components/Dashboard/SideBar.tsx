@@ -16,8 +16,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { UserButton } from '@clerk/nextjs';
 import { AddCircleOutline, Mail } from '@mui/icons-material';
+import Typography from '@mui/material/Typography';
 
-const drawerWidth = 180;
+const drawerWidth = 200;
 
 export default function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -40,9 +41,9 @@ export default function ResponsiveDrawer() {
 
   const drawer = (
     <div>
-      <div className="mx-4 my-4">
+      <Box sx={{ mx: 2, my: 2, display: 'flex', justifyContent: 'center' }}>
         <UserButton />
-      </div>
+      </Box>
       <Divider />
       <List>
         {['Add Receipt', 'Contact'].map((text, index) => (
@@ -60,34 +61,34 @@ export default function ResponsiveDrawer() {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { lg: `calc(100% - ${drawerWidth}px)` },
-          ml: { lg: `${drawerWidth}px` },
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { lg: 'none' }, backgroundColor: 'lightblue' }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-
-      <Box
-        component="nav"
-        sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}
-        aria-label="dashboard"
-      >
+    
+      <><CssBaseline /><AppBar
+      position="fixed"
+      sx={{
+        width: { lg: `calc(100% - ${drawerWidth}px)` },
+        ml: { lg: `${drawerWidth}px` },
+        backgroundColor: '#1976d2',
+      }}
+    >
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { lg: 'none' } }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" noWrap component="div">
+          Dashboard
+        </Typography>
+      </Toolbar>
+    </AppBar><Box
+      component="nav"
+      sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}
+      aria-label="mailbox folders"
+    >
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -107,19 +108,15 @@ export default function ResponsiveDrawer() {
           variant="permanent"
           sx={{
             display: { xs: 'none', lg: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor: '#f4f4f4' },
           }}
           open
         >
           {drawer}
         </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { lg: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        {/* Your main content goes here */}
-      </Box>
-    </Box>
+    
+        
+      </Box></>
+
   );
 }
