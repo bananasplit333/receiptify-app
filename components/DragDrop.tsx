@@ -45,7 +45,8 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
   };
 
   return (
-    <div className="drag-drop-component p-4 sm:p-6 md:p-2">
+    <div>
+    <div className="drag-drop-component p-6 bg-white rounded-lg shadow-lg">
       <FilePond
         ref={pondRef}
         allowMultiple={false}
@@ -63,7 +64,7 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
         }}
         name="files"
         dropValidation={true}
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+        labelIdle='Drag & Drop your files or <span class="filepond--label-action text-blue-600">Browse</span>'
         labelFileProcessing='Uploading'
         labelFileProcessingComplete='Upload complete'
         labelFileProcessingAborted='Upload cancelled'
@@ -72,18 +73,19 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
         onupdatefiles={handleUpdateFiles}
         onprocessfile={handleProcessFile}
       />
-      <div className="uploaded-files-dashboard mt-4">
-        <h2>Uploaded Files</h2>
-        <ul>
+    </div>
+      <div className="uploaded-files-dashboard mt-6">
+        <h2 className="text-lg font-semibold">Uploaded Files</h2>
+        <ul className="list-disc list-inside mt-2">
           {uploadedFiles.map((file, index) => (
-            <li key={index}>
-
+            <li key={index} className="mt-1 text-gray-700">
               <p>{file.filename}</p>
             </li>
           ))}
         </ul>
       </div>
     </div>
+    
   );
 };
 

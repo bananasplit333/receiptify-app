@@ -27,7 +27,7 @@ export default function MainContent() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                                justifyContent: 'center',
+                                justifyContent: 'flex-start',
                             }}
                         >
                             <Box sx={{ width: '100%', mt: 2 }}>
