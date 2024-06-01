@@ -1,7 +1,4 @@
-import { IncomingForm } from 'formidable';
-import {Blob} from 'buffer';
-import fs from 'fs';
-import path from 'path';
+import multer from 'multer';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
 
@@ -12,11 +9,9 @@ export const config = {
   },
 };
 
-// Define the directory where uploads will be stored
-const uploadDir = path.join(process.cwd(), 'uploads');
-
-// Ensure the upload directory exists
-fs.mkdirSync(uploadDir, { recursive: true });
+// Set up multer to store files in memory
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
@@ -24,42 +19,34 @@ const handler = async (req, res) => {
     return;
   }
 
-  const form = new IncomingForm({
-    uploadDir,
-    keepExtensions: true,
-  });
+  // Use multer to handle the file upload
+  const multerUpload = upload.single('file');
 
-  form.parse(req, async (err, fields, files) => {
+  multerUpload(req, res, async function (err) {
     if (err) {
-      console.error('Error parsing the files', err);
-      res.status(500).json({ error: 'Error parsing the files' });
-      return;
+      console.error('Error uploading the file', err);
+      return res.status(500).json({ error: 'Error uploading the file' });
     }
 
-    if (!files) {
+    const file = req.file;
+
+    if (!file) {
       console.error('No files were uploaded');
-      res.status(400).json({ error: 'No files were uploaded' });
-      return;
-    }
-    const filePath = files.files[0].filepath;
-    console.log(filePath); 
-    if (!filePath) {
-      console.error('File path does not exist');
-      res.status(400).json({ error: 'File path does not exist' });
-      return;
+      return res.status(400).json({ error: 'No files were uploaded' });
     }
 
     try {
       const formData = new FormData();
-      formData.append('image', fs.createReadStream(filePath));
-  
-  
+      formData.append('image', file.buffer, {
+        filename: file.originalname,
+        contentType: file.mimetype,
+      });
+
       const response = await fetchWithTimeout('https://api.toddie.org/process-receipts', {
         method: 'POST',
         body: formData,
         headers: formData.getHeaders(),
       });
-     
 
       if (!response.ok) {
         throw new Error('Error processing receipts');
