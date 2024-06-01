@@ -41,7 +41,7 @@ const handler = async (req, res) => {
         filename: file.originalname,
         contentType: file.mimetype,
       });
-
+      {}
       const response = await fetchWithTimeout('https://api.toddie.org/process-receipts', {
         method: 'POST',
         body: formData,
