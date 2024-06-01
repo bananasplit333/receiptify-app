@@ -64,10 +64,10 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
         name="files"
         dropValidation={true}
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-        labelFileProcessing='Uploading'
-        labelFileProcessingComplete='Upload complete'
-        labelFileProcessingAborted='Upload cancelled'
-        labelFileProcessingError='Error during upload.'
+        labelFileProcessing='Processing'
+        labelFileProcessingComplete='Processing complete'
+        labelFileProcessingAborted='Processing cancelled'
+        labelFileProcessingError='Error during processing.'
         oninit={handleInit}
         onupdatefiles={handleUpdateFiles}
         onprocessfile={handleProcessFile}
@@ -77,7 +77,6 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
         <ul>
           {uploadedFiles.map((file, index) => (
             <li key={index}>
-
               <p>{file.filename}</p>
             </li>
           ))}
