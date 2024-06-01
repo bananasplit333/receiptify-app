@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 const initialRows = [
   { id: 1, item: 'broccoli', category: 'groceries', qty: 3, price: 14 },
@@ -40,13 +41,16 @@ const theme = createTheme({
           border: 'none',
         },
         columnHeaders: {
-          backgroundColor: '#ffffff', // White background for headers
+          backgroundColor: '#e3f2fd', // Light blue background for headers
           fontSize: '16px',
           fontWeight: 'bold',
         },
         row: {
           '&:nth-of-type(odd)': {
             backgroundColor: '#f0f0f0', // Light gray background for odd rows
+          },
+          '&:nth-of-type(even)': {
+            backgroundColor: '#ffffff', // White background for even rows
           },
         },
         cell: {
@@ -101,15 +105,15 @@ const ReactSpreadSheet = ({ jsonData }) => {
   }, [jsonData]);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'item', headerName: 'Item', width: 150, editable: true },
-    { field: 'category', headerName: 'Category', width: 150, editable: true },
-    { field: 'qty', headerName: 'Quantity', type: 'number', width: 110, editable: true },
-    { field: 'price', headerName: 'Price', width: 110, editable: true },
+    { field: 'id', headerName: 'ID', width: 90, hide: true},
+    { field: 'item', headerName: 'Item', width: 200, editable: true },
+    { field: 'category', headerName: 'Category', width: 200, editable: true },
+    { field: 'qty', headerName: 'Qty', type: 'number', width: 30, editable: true },
+    { field: 'price', headerName: 'Price', width: 80, editable: true },
     {
       field: 'actions',
       headerName: 'Actions',
-      width: 100,
+      width: 80,
       renderCell: (params) => (
         <GridActionsCellItem
           icon={<DeleteIcon />}
@@ -121,18 +125,45 @@ const ReactSpreadSheet = ({ jsonData }) => {
     },
   ];
 
+  const calculateTotalCost = () => {
+    return rows.reduce((total, row) => total + (row.price * row.qty), 0).toFixed(2);
+  };
+
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', width: '100%', p: 2, bgcolor: '#f0f0f0' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', p: 2, bgcolor: '#f0f0f0', borderRadius: 1 }}>
         <DataGrid
           autoHeight
           rows={rows}
           columns={columns}
           pageSizeOptions={[5, 10, 15]}
-          checkboxSelection
           disableRowSelectionOnClick
-          sx={{ bgcolor: 'background.paper', borderRadius: 1 }}
+          sx={{ bgcolor: 'background.paper', borderRadius: 1, boxShadow: 2 }}
+          initialState={{
+            columns: {
+              columnVisibilityModel: {
+                id: false,
+              },
+            },
+          }}
         />
+        <Box
+          sx={{
+            p: 2,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            bgcolor: '#e3f2fd',
+            borderTop: '1px solid #e0e0e0',
+          }}
+        >
+          <Typography variant="body1" fontWeight="bold">
+            Total Cost:
+          </Typography>
+          <Typography variant="body1" fontWeight="bold">
+            ${calculateTotalCost()}
+          </Typography>
+        </Box>
         <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar}>
           <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
             Row deleted successfully!
@@ -142,5 +173,6 @@ const ReactSpreadSheet = ({ jsonData }) => {
     </ThemeProvider>
   );
 };
+
 
 export default ReactSpreadSheet;

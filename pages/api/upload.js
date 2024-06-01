@@ -41,7 +41,8 @@ const handler = async (req, res) => {
       res.status(400).json({ error: 'No files were uploaded' });
       return;
     }
-    const filePath = files.files[0].filepath; 
+    const filePath = files.files[0].filepath;
+    console.log(filePath); 
     if (!filePath) {
       console.error('File path does not exist');
       res.status(400).json({ error: 'File path does not exist' });
@@ -50,7 +51,7 @@ const handler = async (req, res) => {
 
     try {
       const formData = new FormData();
-      formData.append('images', fs.createReadStream(filePath));
+      formData.append('image', fs.createReadStream(filePath));
   
   
       const response = await fetchWithTimeout('http://127.0.0.1:5000/process-receipts', {
@@ -59,7 +60,6 @@ const handler = async (req, res) => {
         headers: formData.getHeaders(),
       });
      
-      console.log(response);
 
       if (!response.ok) {
         throw new Error('Error processing receipts');
