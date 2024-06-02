@@ -66,14 +66,22 @@ async function fetchWithTimeout(resource, options = {}, timeout = 120000) {
   const { signal, ...restOptions } = options;
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
-  const response = await fetch(resource, {
-    ...restOptions,
-    signal: signal || controller.signal,
-  });
-  clearTimeout(id);
-  return response;
-}
 
+  try {
+    const response = await fetch(resource, {
+      ...restOptions,
+      signal: signal || controller.signal,
+    });
+    clearTimeout(id);
+    return response;
+  } catch (error) {
+    if (retries > 0 && (error.name === 'AbortError' || error.name === 'FetchError')) {
+      console.log(`Retrying... ${retries} attempts left`);
+      return fetchWithTimeout(resource, options, timeout, retries - 1);
+    }
+    throw error;
+  }
+} 
 export default handler;
 
 const sampleJson = {
