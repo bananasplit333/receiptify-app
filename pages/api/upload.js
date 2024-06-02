@@ -1,7 +1,7 @@
-import multer from 'multer';
+import { IncomingForm } from 'formidable';
 import FormData from 'form-data';
 import fetch from 'node-fetch';
-
+import fs from 'fs';
 // Disable Next.js's default body parser to handle file uploads
 export const config = {
   api: {
@@ -9,44 +9,45 @@ export const config = {
   },
 };
 
-// Set up multer to store files in memory
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ message: 'Method not allowed' });
     return;
   }
 
-  // Use multer to handle the file upload
-  const multerUpload = upload.single('file');
+  const form = new IncomingForm();
 
-  multerUpload(req, res, async function (err) {
+  form.parse(req, async (err, fields, files) => {
     if (err) {
-      console.error('Error uploading the file', err);
-      return res.status(500).json({ error: 'Error uploading the file' });
+      console.error('Error parsing the files', err);
+      res.status(500).json({ error: 'Error parsing the files' });
+      return;
     }
 
-    const file = req.file;
-
-    if (!file) {
+    if (!files) {
       console.error('No files were uploaded');
-      return res.status(400).json({ error: 'No files were uploaded' });
+      res.status(400).json({ error: 'No files were uploaded' });
+      return;
+    }
+    const filePath = files.files[0].filepath;
+    console.log(filePath); 
+    if (!filePath) {
+      console.error('File path does not exist');
+      res.status(400).json({ error: 'File path does not exist' });
+      return;
     }
 
     try {
       const formData = new FormData();
-      formData.append('image', file.buffer, {
-        filename: file.originalname,
-        contentType: file.mimetype,
-      });
-      {}
-      const response = await fetchWithTimeout('https://api.toddie.org/process-receipts', {
+      formData.append('image', fs.createReadStream(filePath));
+  
+  
+      const response = await fetchWithTimeout('http://127.0.0.1:5000/process-receipts', {
         method: 'POST',
         body: formData,
         headers: formData.getHeaders(),
       });
+     
 
       if (!response.ok) {
         throw new Error('Error processing receipts');
