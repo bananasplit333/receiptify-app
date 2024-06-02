@@ -42,7 +42,7 @@ const handler = async (req, res) => {
       formData.append('image', fs.createReadStream(filePath));
   
   
-      const response = await fetchWithTimeout('http://127.0.0.1:5000/process-receipts', {
+      const response = await fetchWithTimeout('https://api.toddie.org/process-receipts', {
         method: 'POST',
         body: formData,
         headers: formData.getHeaders(),
