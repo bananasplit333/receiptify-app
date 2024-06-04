@@ -1,5 +1,4 @@
 'use client';
-
 import * as React from 'react';
 import { Avatar, Grid, SxProps, Theme, alpha } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -8,6 +7,7 @@ import Typography from './Typography';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import AutoModeIcon from '@mui/icons-material/AutoMode';
 import DiscFullIcon from '@mui/icons-material/DiscFull';
+import Image from 'next/image';
 
 export default function ResponsiveBenefitsSection() {
     return (
@@ -76,7 +76,7 @@ export default function ResponsiveBenefitsSection() {
                                 Reduce Errors
                             </Typography>
                             <Typography variant="h6" paddingTop={'13px'}>
-                                Minimize errors and discrepancies with Receiptify's accurate transcription and categorization, ensuring
+                                Minimize errors and discrepancies with Receiptify&apos;s accurate transcription and categorization, ensuring
                                 seamless financial management and providing peace of mind for your business operations.
                             </Typography>
                         </Box>
@@ -91,10 +91,10 @@ export default function ResponsiveBenefitsSection() {
                                 height: '100%',
                             }}
                         >
-                            <img
+                            <Image
+                                className="maxWidth:100%, height: 'auto'"
                                 src="/receipt_vector.jpg"
                                 alt="Benefit Image"
-                                style={{ maxWidth: '100%', height: 'auto' }}
                             />
                         </Box>
                     </Grid>
