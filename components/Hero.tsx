@@ -92,7 +92,7 @@ export default function Hero() {
                 autoComplete: 'off',
                 'aria-label': 'Enter your email address',
               }} />
-            <Button variant="contained" color="primary">
+            <Button href="/dashboard" variant="contained" color="primary">
               Start now
             </Button>
           </Stack>

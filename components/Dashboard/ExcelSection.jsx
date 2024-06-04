@@ -105,21 +105,21 @@ const ReactSpreadSheet = ({ jsonData }) => {
   }, [jsonData]);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90, hide: true},
-    { field: 'item', headerName: 'Item', width: 200, editable: true },
-    { field: 'category', headerName: 'Category', width: 200, editable: true },
-    { field: 'qty', headerName: 'Qty', type: 'number', width: 60, editable: true },
-    { field: 'price', headerName: 'Price', width: 100, editable: true },
+    { field: 'id', headerName: 'ID', width: 90, hide: true },
+    { field: 'item', headerName: 'Item', flex: 2, editable: true },
+    { field: 'category', headerName: 'Category', flex: 1.5, editable: true },
+    { field: 'qty', headerName: 'Qty', type: 'number', flex: 1, editable: true },
+    { field: 'price', headerName: 'Price', flex: 1, editable: true },
     {
       field: 'actions',
       headerName: 'Actions',
-      width: 80,
+      flex: 0.5,
       renderCell: (params) => (
         <GridActionsCellItem
           icon={<DeleteIcon />}
           label="Delete"
           onClick={() => handleDelete(params.id)}
-          sx={{ '&:hover': { color: theme.palette.secondary.main } }}
+          sx={{ '&:hover': { color: 'primary.main' } }}
         />
       ),
     },

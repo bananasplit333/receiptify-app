@@ -136,13 +136,14 @@ function ResponsiveAppBar() {
                 sx={{ 
                   my: 2,
                   color: 'white',
-                  bgcolor: 'primary.main',  // Use theme's primary color
+                  bgcolor: '#14a37f',  // Use theme's primary color
                   '&:hover': {
                     bgcolor: 'primary.dark', // Darken on hover
                   },
-                  py: 1.5,
-                  px: 3,
-                  fontWeight: 'bold',
+                  py: 1,
+                  px: 5,
+                  fontSize: '13px',
+                  fontWeight: 'normal',
                   borderRadius: '8px', // Rounded corners
                 }}
               >

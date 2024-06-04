@@ -13,7 +13,7 @@ const item: SxProps<Theme> = {
     px: 4,
     py: 5,
     bgcolor: 'background.paper',
-    boxShadow: 1,
+    boxShadow: '0 0 3px 1px rgba(133, 193, 233)',
     borderRadius: 2,
     textAlign: 'center',
     height: '100%', // Ensure all boxes are of equal height
@@ -43,10 +43,10 @@ export default function HowTo() {
     return (
         <Box
             component="section"
-            sx={(theme) => ({
+            sx={() => ({
                 width: '100%',
-                backgroundColor: theme.palette.background.default,
-                py: 10,
+                backgroundColor: 'theme.palette.background.default',
+                py: 10
             })}
         >
             <Container
@@ -57,9 +57,6 @@ export default function HowTo() {
                     alignItems: 'center',
                 }}
             >
-                <Typography variant="h4" marked="center" component="h2" sx={{ mb: 10 }}>
-                    How it works
-                </Typography>
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={4}>
                         <Box sx={item}>
@@ -93,7 +90,7 @@ export default function HowTo() {
                 </Grid>
 
                 {/* Add the button here */}
-                <Box sx={{ mt: 8 }}>
+                <Box sx={{ mt: 6}}>
                     <Button
                         href="/dashboard" 
                         variant="contained" 

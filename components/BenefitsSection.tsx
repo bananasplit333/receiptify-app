@@ -5,15 +5,13 @@ import { Avatar, Grid, SxProps, Theme, alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from './Typography';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import InsightsIcon from '@mui/icons-material/Insights';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import AutoModeIcon from '@mui/icons-material/AutoMode';
+import DiscFullIcon from '@mui/icons-material/DiscFull';
 
 export default function ResponsiveBenefitsSection() {
     return (
-        <Box
-            sx={{ bgcolor: 'background.paper', pb: 5 }}
-        >
+        <Box sx={{ bgcolor: 'background.paper', pb: 5 }}>
             <Container
                 sx={{
                     display: 'flex',
@@ -23,67 +21,81 @@ export default function ResponsiveBenefitsSection() {
                     pb: { xs: 8, sm: 12 },
                 }}
             >
-                <Typography variant="h4" marked="center" component="h2" sx={{ mb: 12 }}>
-                    Streamline Your Expense Tracking
+                <Typography variant="h3" fontWeight="bold" sx={{ mb: 2 }}>
+                    Save Time
                 </Typography>
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={4}>
+
+                <Typography variant="h6" sx={{ mb: 4, textAlign: 'center' }}>
+                    Automate expense tracking and focus on what matters most - growing your business.
+                </Typography>
+
+                <Grid container spacing={1}>
+                    <Grid item xs={12} md={6}>
                         <Box
                             sx={{
                                 bgcolor: 'background.default',
-                                boxShadow: 3,
-                                borderRadius: 2,
-                                p: 4,
-                                textAlign: 'center',
+                                textAlign: 'left',
+                                pl: 10,
+                                pb: 5,
                             }}
                         >
-                            <AccessTimeIcon sx={{ fontSize: 40, mb: 2, color: 'primary.main' }} />
-                            <Typography variant="h6" fontWeight="bold">
-                                Save Time
+                            <AutoModeIcon fontSize="large" color="info" />
+                            <Typography variant="h5" fontWeight="bold" paddingTop={'20px'}>
+                                Enhance Productivity
                             </Typography>
-                            <Typography>
-                                Automate expense tracking and focus on what matters most - growing your business.
+                            <Typography variant="h6" paddingTop={'13px'}>
+                                Automate your expense tracking to eliminate tedious tasks, allowing you to focus on what truly matters:
+                                growing your business, maximizing productivity, and enjoying streamlined financial processes.
                             </Typography>
                         </Box>
-                    </Grid>
-
-                    <Grid item xs={12} md={4}>
                         <Box
                             sx={{
                                 bgcolor: 'background.default',
-                                boxShadow: 3,
-                                borderRadius: 2,
-                                p: 4,
-                                textAlign: 'center',
+                                textAlign: 'left',
+                                pl: 10,
+                                pb: 5,
                             }}
                         >
-                            <InsightsIcon sx={{ fontSize: 40, mb: 2, color: 'primary.main' }} />
-                            <Typography variant="h6" fontWeight="bold">
+                            <AutoGraphIcon fontSize="large"  color="info"/>
+                            <Typography variant="h5" fontWeight="bold" paddingTop={'20px'}>
                                 Gain Insights
                             </Typography>
-                            <Typography>
-                                Make data-driven decisions with accurate and categorized expense reports.
+                            <Typography variant="h6" paddingTop={'13px'}>
+                                Make data-driven decisions with accurate, categorized expense reports that help streamline your financial management.
+                            </Typography>
+                        </Box>
+                        <Box
+                            sx={{
+                                bgcolor: 'background.default',
+                                textAlign: 'left',
+                                pl: 10,
+                            }}
+                        >
+                            <DiscFullIcon fontSize="large"  color="info"/>
+                            <Typography variant="h5" fontWeight="bold" paddingTop={'20px'}>
+                                Reduce Errors
+                            </Typography>
+                            <Typography variant="h6" paddingTop={'13px'}>
+                                Minimize errors and discrepancies with Receiptify's accurate transcription and categorization, ensuring
+                                seamless financial management and providing peace of mind for your business operations.
                             </Typography>
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={6} container justifyContent="center" alignItems="center">
                         <Box
                             sx={{
-                                bgcolor: 'background.default',
-                                boxShadow: 3,
-                                borderRadius: 2,
-                                p: 4,
-                                textAlign: 'center',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '100%',
                             }}
                         >
-                            <ErrorOutlineIcon sx={{ fontSize: 40, mb: 2, color: 'primary.main' }} />
-                            <Typography variant="h6" fontWeight="bold">
-                                Reduce Errors
-                            </Typography>
-                            <Typography>
-                                Minimize errors and discrepancies with Receiptify&apos;s accurate transcription and categorization.
-                            </Typography>
+                            <img
+                                src="/receipt_vector.jpg"
+                                alt="Benefit Image"
+                                style={{ maxWidth: '100%', height: 'auto' }}
+                            />
                         </Box>
                     </Grid>
                 </Grid>

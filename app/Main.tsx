@@ -6,6 +6,7 @@ import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
 import ResponsiveBenefitsSection from '@/components/BenefitsSection';
 import CallToAction from '@/components/CallToAction';
+import PricingPlans from '@/components/Pricing';
 
 //TODO: add landing page photo 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Hero />
           <HowTo />
           <ResponsiveBenefitsSection />
+          <PricingPlans/>
           <CallToAction />
         </main>
 
