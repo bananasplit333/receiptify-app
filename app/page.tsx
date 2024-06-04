@@ -1,5 +1,5 @@
 'use client'
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/nextjs";
 import Main from "./Main";
 import Dashboard from "./dashboard/page";
 

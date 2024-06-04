@@ -108,8 +108,8 @@ const ReactSpreadSheet = ({ jsonData }) => {
     { field: 'id', headerName: 'ID', width: 90, hide: true},
     { field: 'item', headerName: 'Item', width: 200, editable: true },
     { field: 'category', headerName: 'Category', width: 200, editable: true },
-    { field: 'qty', headerName: 'Qty', type: 'number', width: 30, editable: true },
-    { field: 'price', headerName: 'Price', width: 80, editable: true },
+    { field: 'qty', headerName: 'Qty', type: 'number', width: 60, editable: true },
+    { field: 'price', headerName: 'Price', width: 100, editable: true },
     {
       field: 'actions',
       headerName: 'Actions',

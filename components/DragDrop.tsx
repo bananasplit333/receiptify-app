@@ -71,6 +71,7 @@ const DragDropComponent: React.FC<DragDropComponentProps> = ({ onJsonDataReceive
         oninit={handleInit}
         onupdatefiles={handleUpdateFiles}
         onprocessfile={handleProcessFile}
+        
       />
       <div className="uploaded-files-dashboard mt-4">
         <h2>Uploaded Files</h2>

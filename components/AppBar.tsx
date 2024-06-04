@@ -125,15 +125,15 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page}  
               </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <SignedOut>
-              <Button color="inherit" onClick={() => openSignIn()}>
-                Sign In
+              <Button className="py-3 px-16 hover:bg-zinc-400 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-85 focus:shadow-none active:opacity-85 active:shadow-none" onClick={() => openSignIn()}>
+                DASHBOARD
               </Button>
             </SignedOut>
             <SignedIn>
