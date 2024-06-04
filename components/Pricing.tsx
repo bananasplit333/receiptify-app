@@ -26,9 +26,9 @@ const PricingPlans: React.FC = () => {
   };
 
   return (
-    <Box sx={containerStyles}>
+    <Box sx={containerStyles} sx={{m: 10}}>
       <Container>
-        <Typography variant="h4" sx={{ mb: 2 }}>
+        <Typography variant="h4" sx={{ mb: 5 }}>
           Pricing Plans
         </Typography>
         <Typography variant="body1" gutterBottom>
