@@ -100,8 +100,9 @@ export default function HowTo() {
                         color="primary" 
                         sx={{ 
                             px: 3, 
-                            py: 1.5, 
-                            fontSize: '16px',
+                            py: 1, 
+                            fontSize: '12px',
+                            fontStyle: 'bold',
                         }}
                     >
                         Explore the Dashboard

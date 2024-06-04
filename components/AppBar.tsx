@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         <Toolbar disableGutters>
           <ReceiptLongIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -69,6 +69,7 @@ function ResponsiveAppBar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              aria-expanded={Boolean(anchorElNav)}
             >
               <MenuIcon />
             </IconButton>
@@ -130,13 +131,24 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <SignedOut>
-              <Button className="py-3 px-16 hover:bg-zinc-400 align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-85 focus:shadow-none active:opacity-85 active:shadow-none" onClick={() => openSignIn()}>
+              <Button 
+                onClick={() => openSignIn()} 
+                sx={{ 
+                  my: 2,
+                  color: 'white',
+                  bgcolor: 'primary.main',  // Use theme's primary color
+                  '&:hover': {
+                    bgcolor: 'primary.dark', // Darken on hover
+                  },
+                  py: 1.5,
+                  px: 3,
+                  fontWeight: 'bold',
+                  borderRadius: '8px', // Rounded corners
+                }}
+              >
                 DASHBOARD
               </Button>
             </SignedOut>
-            <SignedIn>
-              <UserButton/>
-            </SignedIn>
           </Box>
         </Toolbar>
       </Container>
