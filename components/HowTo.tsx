@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Avatar, Grid, SxProps, Theme } from '@mui/material';
+import { Avatar, Button, Grid, SxProps, Theme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from './Typography';
@@ -91,6 +91,22 @@ export default function HowTo() {
                         </Box>
                     </Grid>
                 </Grid>
+
+                {/* Add the button here */}
+                <Box sx={{ mt: 8 }}>
+                    <Button
+                        href="/dashboard" 
+                        variant="contained" 
+                        color="primary" 
+                        sx={{ 
+                            px: 3, 
+                            py: 1.5, 
+                            fontSize: '16px',
+                        }}
+                    >
+                        Explore the Dashboard
+                    </Button>
+                </Box>
             </Container>
         </Box>
     );
