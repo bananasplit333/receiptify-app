@@ -1,3 +1,5 @@
+'use client';
+
 import { Grid } from '@mui/material';
 import ResponsiveDrawer from '@/components/Dashboard/SideBar';
 import MainContent from '@/components/Dashboard/MainContent';
