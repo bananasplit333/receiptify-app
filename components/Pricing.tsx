@@ -6,7 +6,10 @@ import { Grid, Card, CardContent, Typography, Button, ButtonGroup, Box, Containe
 const PricingPlans: React.FC = () => {
   const containerStyles = {
     padding: 4,
+    margin: 13,
     textAlign: 'center',
+    mt: 5,
+    mb: 30,
   };
 
   const buttonGroupStyles = {
@@ -26,7 +29,7 @@ const PricingPlans: React.FC = () => {
   };
 
   return (
-    <Box sx={containerStyles} sx={{m: 10}}>
+    <Box sx={containerStyles}>
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
           Pricing Plans
@@ -42,8 +45,8 @@ const PricingPlans: React.FC = () => {
             Yearly billing
           </Button>
         </ButtonGroup>
-        <Grid container spacing={4} paddingTop="20px"justifyContent="center">
-          <Grid item xs={12} sm={4}>
+        <Grid container spacing={3} paddingTop="20px"justifyContent="center">
+          <Grid item xs={12} sm={12} md={4}>
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -59,7 +62,7 @@ const PricingPlans: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={12} md={4}>
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
@@ -75,16 +78,16 @@ const PricingPlans: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={12} md={4}>
             <Card sx={cardStyles}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
                   Enterprise
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                  Custom OCR solutions for your business. Dashboard customization, and more.
+                Tailored OCR solutions for your business, including customizable dashboards and additional features.
                 </Typography>
-                <Typography sx={priceStyles}>custom</Typography>
+                <Typography sx={priceStyles}>contact</Typography>
                 <Button variant="contained" color="primary" fullWidth>
                   Contact
                 </Button>
