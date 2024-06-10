@@ -1,159 +1,88 @@
 'use client';
 
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { SignInButton, SignedIn, SignedOut, UserButton, useClerk, useUser } from '@clerk/nextjs';
 
 const pages = ['Pricing', 'Contact'];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [isNavOpen, setIsNavOpen] = React.useState(false);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleToggleNav = () => {
+    setIsNavOpen(!isNavOpen);
   };
 
   const { openSignIn } = useClerk();
   const { isSignedIn } = useUser();
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-        <Toolbar disableGutters>
-          <ReceiptLongIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
+    <div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div className="flex items-center">
+          <svg
+            className="hidden md:block h-8 w-8 mr-2 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2a1 1 0 001 1h1v2h-2v2h4v-4a1 1 0 00-1-1h-1V7h1V5h-2z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <a
             href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+            className="hidden md:block text-white font-mono text-xl font-bold tracking-widest"
           >
             RECEIPTIFY
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-              aria-expanded={Boolean(anchorElNav)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <ReceiptLongIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          </a>
+        </div>
+        <div className="flex items-center md:hidden">
+          <button
+            onClick={handleToggleNav}
+            className="text-white"
           >
-            RECEIPTIFY
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <svg
+              className="h-8 w-8"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 5h14M3 10h14m-7 5h7"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className={`${isNavOpen ? 'block' : 'hidden'} md:flex flex-grow items-center justify-between`}>
+          <div className="flex flex-col md:flex-row md:space-x-4">
             {pages.map((page) => (
-              <Button
+              <a
                 key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                href={`#${page.toLowerCase()}`}
+                className="text-white my-2 md:my-0"
+                onClick={() => setIsNavOpen(false)}
               >
-                {page}  
-              </Button>
+                {page}
+              </a>
             ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+          </div>
+          <div className="flex items-center">
             <SignedOut>
-              <Button 
-                onClick={() => openSignIn()} 
-                sx={{ 
-                  my: 2,
-                  color: 'white',
-                  bgcolor: '#14a37f',  // Use theme's primary color
-                  '&:hover': {
-                    bgcolor: 'primary.dark', // Darken on hover
-                  },
-                  py: 1,
-                  px: 5,
-                  fontSize: '13px',
-                  fontWeight: 'normal',
-                  borderRadius: '8px', // Rounded corners
-                }}
+              <button
+                onClick={() => openSignIn()}
+                className="bg-green-600 text-white py-2 px-5 rounded-lg hover:bg-green-700 transition"
               >
                 DASHBOARD
-              </Button>
+              </button>
             </SignedOut>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -1,130 +1,60 @@
 'use client';
 
 import * as React from 'react';
-import { CssBaseline, alpha } from '@mui/material';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 export default function Hero() {
-  return (  
-    <>
-    <CssBaseline />
-    <Box
-      id="hero"
-      sx={(theme) => ({
-        width: '100%',
-        backgroundImage: theme.palette.mode === 'light'
-          ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-          : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
-        backgroundSize: '100% 20%',
-        backgroundRepeat: 'no-repeat',
-      })}
-    >
-      <Container
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
-          pb: { xs: 8, sm: 12 },
-        }}
-      >
-        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '90%' } }}>
-          <Typography
-            variant="h1"
-            sx={{
-              display: 'flex-col',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignSelf: 'center',
-              textAlign: 'center',
-              fontSize: 'clamp(3.5rem, 10vw, 4rem)',
-            }}
-          >
-            Automate your&nbsp;
-            <span className="text-indigo-500 inline-flex fltext-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.loose))] sm:h-[calc(theme(fontSize.6xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.loose))] overflow-hidden">
-              <Typography
-                variant="h1"
-                sx={{
-                  fontSize: 'clamp(3rem, 10vw, 4rem)',
-                  color: (theme) => theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
-                }}
-              >
-                <ul className="block animate-text-slide-4 sm:text-center md:text-left lg:text-left leading-tight [&_li]:block">
+  return (
+      <div className="items-center bg-blue container mx-auto px-4">
+        <p>hihi</p>
+      </div>
+  );
+}
+
+/**
+ * <div className="container mx-auto flex flex-col items-center pt-14 sm:pt-20 pb-8 sm:pb-12 px-4">
+          <div className="flex flex-col items-center w-full sm:w-9/10 space-y-6">
+            <h1 className="flex flex-col items-center text-center text-4xl sm:text-6xl md:text-5xl font-bold mb-6">
+              Automate your 
+              <span className="text-indigo-500 inline-flex flex-col overflow-hidden h-14 sm:h-20 md:h-16 leading-tight">
+                <ul className="block animate-text-slide-4 leading-tight">
                   <li>bills</li>
                   <li>receipts</li>
                   <li>expenses</li>
                   <li>transactions</li>
                   <li aria-hidden="true">bills</li>
                 </ul>
-
-              </Typography>
-            </span>
-          </Typography>
-          <Typography
-            textAlign="center"
-            color="text.secondary"
-            sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
-          >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
-          </Typography>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            alignSelf="center"
-            spacing={1}
-            useFlexGap
-            sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
-          >
-            <TextField
-              id="outlined-basic"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
-              inputProps={{
-                autoComplete: 'off',
-                'aria-label': 'Enter your email address',
-              }} />
-            <Button href="/dashboard" variant="contained" color="primary">
-              Start now
-            </Button>
-          </Stack>
-          <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>
-        </Stack>
-        <Box
-          id="image"
-          sx={(theme) => ({
-            mt: { xs: 8, sm: 10 },
-            alignSelf: 'center',
-            height: { xs: 200, sm: 700 },
-            width: '100%',
-            backgroundImage: theme.palette.mode === 'light'
-              ? 'url("/ss_dashboard.png")'
-              : 'url("/ss_dashboard.png")',
-            backgroundSize: 'cover',
-            borderRadius: '10px',
-            outline: '1px solid',
-            outlineColor: theme.palette.mode === 'light'
-              ? alpha('#BFCCD9', 0.5)
-              : alpha('#9CCCFC', 0.1),
-            boxShadow: theme.palette.mode === 'light'
-              ? `0 0 12px 8px ${alpha('#9CCCFC', 0.2)}`
-              : `0 0 24px 12px ${alpha('#033363', 0.2)}`,
-          })} />
-      </Container>
-    </Box></>
-  );
-}
+              </span>
+            </h1>
+            <p className="text-center text-gray-600 dark:text-gray-300 w-full md:w-4/5 mb-6">
+              Explore our cutting-edge dashboard, delivering high-quality solutions tailored to your needs. Elevate your experience with top-tier features and services.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4 w-full sm:w-auto">
+              <input
+                id="outlined-basic"
+                type="text"
+                aria-label="Enter your email address"
+                placeholder="Your email address"
+                className="p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                autoComplete="off"
+              />
+              <a href="/dashboard" className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition shadow-md">
+                Start now
+              </a>
+            </div>
+            <p className="text-center text-gray-600 dark:text-gray-300 text-sm opacity-80 mt-6">
+              By clicking &quot;Start now&quot; you agree to our&nbsp;
+              <a href="#" className="text-blue-500 hover:underline">
+                Terms & Conditions
+              </a>
+              .
+            </p>
+          </div>
+          <div
+            id="image"
+            className="mt-10 w-full h-64 sm:h-96 bg-cover bg-center rounded-lg border border-gray-300 dark:border-gray-700 shadow-lg"
+            style={{
+              backgroundImage: 'url("/ss_dashboard.png")',
+            }}
+          />
+        </div>
+ */

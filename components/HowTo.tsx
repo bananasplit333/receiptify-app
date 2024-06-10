@@ -1,111 +1,43 @@
 'use client';
 
 import * as React from 'react';
-import { Avatar, Button, Grid, SxProps, Theme } from '@mui/material';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from './Typography';
-
-const item: SxProps<Theme> = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    px: 4,
-    py: 5,
-    bgcolor: 'background.paper',
-    boxShadow: '0 0 3px 1px rgba(133, 193, 233)',
-    borderRadius: 2,
-    textAlign: 'center',
-    height: '100%', // Ensure all boxes are of equal height
-};
-
-const badge: SxProps<Theme> = {
-    fontSize: 12,
-    fontWeight: 'bold',
-    py: 1,
-    px: 2,
-    borderRadius: 1,
-    mb: 2,
-};
-
-const title = {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'text.primary',
-};
-
-const description = {
-    fontSize: 14,
-    color: 'text.secondary',
-};
 
 export default function HowTo() {
-    return (
-        <Box
-            component="section"
-            sx={() => ({
-                width: '100%',
-                backgroundColor: 'theme.palette.background.default',
-                py: 10
-            })}
-        >
-            <Container
-                sx={{
-                    position: 'relative',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={4}>
-                        <Box sx={item}>
-                            <Box sx={{ ...badge, bgcolor: 'primary.light'}}>Upload</Box>
-                            <Typography className="pb-4" sx={title}>Upload Seamlessly</Typography>
-                            <Typography variant="body1" sx={description}>
-                                Receiptify allows you to seamlessly upload your receipts, and saves you time so you can focus on the bigger tasks. 
-                            </Typography>
-                        </Box>
-                    </Grid>
+  return (
+    <section className="w-full bg-gray-100 py-10">
+      <div className="container mx-auto flex flex-col items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+          <div className="flex flex-col items-center px-4 py-5 bg-white shadow-md rounded-md text-center h-full">
+            <div className="text-sm font-bold py-1 px-2 bg-blue-100 text-blue-600 rounded mb-2">Upload</div>
+            <h2 className="pb-4 text-lg font-bold text-gray-900">Upload Seamlessly</h2>
+            <p className="text-sm text-gray-700">
+              Receiptify allows you to seamlessly upload your receipts, and saves you time so you can focus on the bigger tasks.
+            </p>
+          </div>
 
-                    <Grid item xs={12} md={4}>
-                        <Box sx={item}>
-                            <Box sx={{ ...badge, bgcolor: 'secondary.light' }}>Extraction</Box>
-                            <Typography className="pb-4" sx={title}>Organize faster</Typography>
-                            <Typography sx={description}>
-                                Utilizing OCR processing and AI, Receiptify handles the uploading, organizing, and categorizing of your expenses into a handy excel-style sheet.
-                            </Typography>
-                        </Box>
-                    </Grid>
+          <div className="flex flex-col items-center px-4 py-5 bg-white shadow-md rounded-md text-center h-full">
+            <div className="text-sm font-bold py-1 px-2 bg-green-100 text-green-600 rounded mb-2">Extraction</div>
+            <h2 className="pb-4 text-lg font-bold text-gray-900">Organize faster</h2>
+            <p className="text-sm text-gray-700">
+              Utilizing OCR processing and AI, Receiptify handles the uploading, organizing, and categorizing of your expenses into a handy excel-style sheet.
+            </p>
+          </div>
 
-                    <Grid item xs={12} md={4}>
-                        <Box sx={item}>
-                            <Box sx={{ ...badge, bgcolor: 'warning.light' }}>Visual Editor</Box>
-                            <Typography className="pb-4" sx={title}>Click, edit, publish</Typography>
-                            <Typography sx={description}>
-                                Edit your sheets on the web, and publish it to the world. Receiptify allows for you to export and share your sheets with ease.
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+          <div className="flex flex-col items-center px-4 py-5 bg-white shadow-md rounded-md text-center h-full">
+            <div className="text-sm font-bold py-1 px-2 bg-yellow-100 text-yellow-600 rounded mb-2">Visual Editor</div>
+            <h2 className="pb-4 text-lg font-bold text-gray-900">Click, edit, publish</h2>
+            <p className="text-sm text-gray-700">
+              Edit your sheets on the web, and publish it to the world. Receiptify allows for you to export and share your sheets with ease.
+            </p>
+          </div>
+        </div>
 
-                {/* Add the button here */}
-                <Box sx={{ mt: 6}}>
-                    <Button
-                        href="/dashboard" 
-                        variant="contained" 
-                        color="primary" 
-                        sx={{ 
-                            px: 3, 
-                            py: 1, 
-                            fontSize: '12px',
-                            fontStyle: 'bold',
-                        }}
-                    >
-                        Explore the Dashboard
-                    </Button>
-                </Box>
-            </Container>
-        </Box>
-    );
+        <div className="mt-6">
+          <a href="/dashboard" className="bg-blue-600 text-white py-2 px-4 rounded text-sm font-bold hover:bg-blue-700 transition">
+            Explore the Dashboard
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }

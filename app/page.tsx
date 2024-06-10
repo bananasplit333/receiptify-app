@@ -1,7 +1,6 @@
 'use client'
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/nextjs";
 import Main from "./Main";
-import Dashboard from "./dashboard/page";
 
 export default function Page() {
   return (
@@ -10,7 +9,6 @@ export default function Page() {
       <Main />
     </SignedOut>
     <SignedIn>
-      <Dashboard />
     </SignedIn>
   </>
   );

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
 import Hero from '@/components/Hero';
 import ResponsiveAppBar from '@/components/AppBar';
 import HowTo from '@/components/HowTo';
@@ -8,23 +7,28 @@ import ResponsiveBenefitsSection from '@/components/BenefitsSection';
 import CallToAction from '@/components/CallToAction';
 import PricingPlans from '@/components/Pricing';
 
-//TODO: add landing page photo 
+// TODO: add landing page photo 
 function App() {
   return (
-    <div className="">
-      <header>
-        <ResponsiveAppBar />
+    <div className="flex flex-col items-center justify-center">
+      <Head>
+        <title>Receiptify</title>
+        <meta name="description" content="Streamline your expense tracking with Receiptify" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <header className="w-full">
       </header>
-        <main className="bg-white flex flex-col justify-center mb-4">
-          <Hero />
-          <HowTo />
-          <ResponsiveBenefitsSection />
-          <PricingPlans/>
-          <CallToAction />
-        </main>
 
+      <main className="bg-black flex flex-col items-center justify-center w-full mb-4">
+        <Hero />
+        <HowTo />
+        <ResponsiveBenefitsSection />
+        <PricingPlans />
+        <CallToAction />
+      </main>
 
-      <footer className="flex justify-center mb-4">
+      <footer className="flex justify-center w-full py-4">
         <p className="text-sm text-gray-500">Copyright 2024 Receiptify. All rights reserved.</p>
       </footer>
 
